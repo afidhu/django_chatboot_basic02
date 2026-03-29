@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>ChatBot home Screen</h1>
+<p></p>
+
+
+<script>
+const getChat = async () => {
+    const paragraph = document.createElement('p');
+    document.body.appendChild(paragraph);
+
+    try {
+        const response = await fetch('http://127.0.0.1:8000/chats/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ message: 'list all product' })
+        });
+
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+
+        let result = '';
+
+        while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+
+            const chunk = decoder.decode(value);
+            result += chunk;
+
+            // update UI live
+            paragraph.innerText = result;
+        }
+
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+getChat();
+</script>
+
+</body>
+
+</html>
