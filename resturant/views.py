@@ -13,7 +13,8 @@ class ProductList(generics.ListCreateAPIView):
     queryset = ProductModel.objects.all()
     serializer_class = ProductSerializer
     
-
+    
+    
 class ChatView(generics.GenericAPIView):
 
     def post(self, request, *args, **kwargs):

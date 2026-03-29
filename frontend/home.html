@@ -18,6 +18,7 @@ const getChat = async () => {
     const paragraph = document.createElement('p');
     document.body.appendChild(paragraph);
 
+
     try {
         const response = await fetch('http://127.0.0.1:8000/chats/', {
             method: 'POST',
@@ -43,10 +44,12 @@ const getChat = async () => {
             paragraph.innerText = result;
         }
 
+
     } catch (error) {
         console.error('Error fetching data:', error);
     }
 }
+
 
 getChat();
 </script>
