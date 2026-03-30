@@ -79,12 +79,24 @@ WSGI_APPLICATION = 'django_bot.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'restaurant_db', # The database name you created
+        'USER': 'postgres', # The user name you created
+        'PASSWORD': '2002afidhu', # The password you set
+        'HOST': 'localhost',
+        'PORT': '5432', # Leave blank to use the default port (5432)
     }
 }
+
 
 
 # Password validation
