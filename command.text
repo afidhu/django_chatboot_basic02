@@ -1,4 +1,9 @@
 
-venv\Scripts\activate
+=>source .venv/bin/activate
 
-deactivate
+
+=>deactivate
+=>pip freeze > requirements.txt
+
+///Embebed
+=>ollama pull nomic-embed-text
